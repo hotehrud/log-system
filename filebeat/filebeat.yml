@@ -1,0 +1,10 @@
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/server/req.log
+    fields:
+      topic: req-log
+
+output.logstash:
+  hosts: ["logstash:5044"]
