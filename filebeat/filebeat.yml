@@ -6,5 +6,11 @@ filebeat.inputs:
     fields:
       topic: req-log
 
-output.logstash:
-  hosts: ["logstash:5044"]
+output.kafka:
+  hosts: ["kafka:9092"]
+  topic: 'log'
+  partition.round_robin:
+    reachable_only: false
+  required_acks: 1
+  compression: gzip
+  max_message_bytes: 1000000

@@ -69,6 +69,30 @@ services:
     depends_on:
       - elasticsearch
 
+  zookeeper:
+    image: wurstmeister/zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    networks:
+      - elk
+
+  kafka:
+    image: wurstmeister/kafka:2.13-2.7.0
+    container_name: kafka
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_HOST_NAME: kafka
+      KAFKA_ADVERTISED_PORT: 9092
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    networks:
+      - elk
+
   app:
     build:
       context: ./app
@@ -87,7 +111,7 @@ services:
     networks:
       - elk
     depends_on:
-      - logstash
+      - kafka
 
 networks:
   elk:
