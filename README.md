@@ -2,8 +2,6 @@
 
 Based on [docker-elk](https://github.com/deviantony/docker-elk)
 
-environment - macOS
-
 ## 🚀 Stack
 
 - Filebeat
@@ -59,7 +57,7 @@ $ docker logs -f {CONTAINER}
 
 ### Kafka Command
 
-#### kafka sh path
+#### Shell script path : ex) macOS
 ```shell script
 $ cd opt/kafka/bin/
 ```
