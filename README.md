@@ -55,6 +55,16 @@ $ docker exec -it {CONTAINER} /bin/bash
 $ docker logs -f {CONTAINER}
 ```
 
+#### List networks
+```shell script
+$ docker network ls
+```
+
+#### Display detailed information on one or more networks
+```shell script
+$ docker network inspect {NETWORK}
+```
+
 ### Kafka Command
 
 #### Shell script path : ex) macOS
@@ -79,9 +89,13 @@ $ kafka-console-producer.sh --topic {TOPIC} --broker-list kafka:9092
 
 ### 🔥 History
 
+1. ELK
+
+   ![ELK](ELK.png) 
+
 1. ELK + Filebeat
     
-   you can checkout "filebeat" tag.
+   🔥 you can checkout "filebeat" tag.
    
    ![ELK_Beats](ELK_Beats.png)
 
